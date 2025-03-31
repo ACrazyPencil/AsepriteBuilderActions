@@ -53,8 +53,7 @@ jobs:
         run: |
           powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
           choco install openssl -y
-          Invoke-WebRequest https://raw.githubusercontent.com/pizzapi2012/AsepriteBuilderActions/refs/heads/main/aseprite.vsconfig -OutFile aseprite.vsconfig
-          choco install visualstudio2022community --package-parameters "--norestart --wait --passive --config aseprite.vsconfig" -y
+          choco install visualstudio2022community --package-parameters "--passive --wait --add 'Microsoft.VisualStudio.Component.CoreEditor;Microsoft.VisualStudio.Workload.CoreEditor;Microsoft.VisualStudio.Component.Roslyn.Compiler;Microsoft.Component.MSBuild;Microsoft.VisualStudio.Component.TextTemplating;Microsoft.VisualStudio.Component.VC.CoreIde;Microsoft.VisualStudio.Component.VC.Tools.x86.x64;Microsoft.VisualStudio.Component.Graphics.Tools;Microsoft.VisualStudio.Component.VC.DiagnosticTools;Microsoft.VisualStudio.Component.Windows11SDK.22621;Microsoft.VisualStudio.Component.VC.ATL;Microsoft.VisualStudio.Component.VC.Redist.14.Latest;Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core;Microsoft.VisualStudio.Component.Windows11Sdk.WindowsPerformanceToolkit;Microsoft.VisualStudio.Component.CppBuildInsights;Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.CMake;Microsoft.VisualStudio.Component.VC.CMake.Project;Microsoft.VisualStudio.Component.Vcpkg;Microsoft.VisualStudio.Workload.NativeDesktop'"
       - name: Build Aseprite v1.3.13
         shell: cmd
         run: |
